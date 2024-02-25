@@ -8406,6 +8406,12 @@
 			<div class="role-description">
 				<p>A type of checkbox that represents on/off values, as opposed to checked/unchecked values. See related <rref>checkbox</rref>.</p>
 				<p>The <sref>aria-checked</sref> <a>attribute</a> of a <code>switch</code> indicates whether the input is on (<code>true</code>) or off (<code>false</code>). The <code>mixed</code> value is invalid, and user agents MUST treat a <code>mixed</code> value as equivalent to <code>false</code> for this role.</p>
+				<p>When the binary on/off paradigm doesn't apply (e.g., the functionality involves toggling between different units of measurement, such as centimeters and inches), authors SHOULD ensure:</p>
+				<ul>
+					<li>The <code>aria-checked</code> value is always set to <code>true</code>.</li>
+					<li>The <code>switch</code> has a non-empty <code>aria-valuetext</code> value.</li>
+					<li>The <code>aria-valuetext</code> value is updated accordingly to accurately reflect the state of the switch button.</li>
+				</ul>
 				<p class="note">A <code>switch</code> provides approximately the same functionality as a <code>checkbox</code> and toggle <code>button</code>, but makes it possible for assistive technologies to present the widget in a fashion consistent with its on-screen appearance.</p>
 			</div>
 			<table class="role-features">
@@ -13129,11 +13135,12 @@ button.ariaPressed; // null</pre>
 		<div class="property" id="aria-valuetext">
 			<pdef>aria-valuetext</pdef>
 			<div class="property-description">
-				<p><a>Defines</a> the human readable text alternative of <pref>aria-valuenow</pref> for a range <a>widget</a>.</p>
-				<p>This property is used, for example, on a range widget such as a slider or progress bar.</p>
-				<p>If the <pref>aria-valuetext</pref> attribute is set, authors SHOULD also set the <pref>aria-valuenow</pref> attribute, unless that value is unknown (for example, on an indeterminate <rref>progressbar</rref>).</p>
+				<p><a>Defines</a> the human readable text alternative for a prefedined numeric or boolean value.</p>
+				<p>This property is used, for example, on a range widget such as a slider or progress bar, or on a switch button that involves toggling between different units of measurement, such as centimeters and inches.</p>
+				<p>If the <pref>aria-valuetext</pref> attribute is set to a range widget or separator widget, authors SHOULD also set the <pref>aria-valuenow</pref> attribute, unless that value is unknown (for example, on an indeterminate <rref>progressbar</rref>).</p>
 				<p>Authors SHOULD only set the <pref>aria-valuetext</pref> attribute when the rendered value cannot be meaningfully represented as a number. For example, a slider might have rendered values of <code>small</code>, <code>medium</code>, and <code>large</code>. In this case, the values of <pref>aria-valuenow</pref> could range from 1 through 3, which indicate the position of each value in the value space, but the <pref>aria-valuetext</pref> would be one of the strings: <code>small</code>, <code>medium</code>, or <code>large</code>. If the <pref>aria-valuetext</pref> attribute is absent, the <a>assistive technologies</a> will rely solely on the <pref>aria-valuenow</pref> attribute for the current value.</p>
-				<p>If <pref>aria-valuetext</pref> is specified, assistive technologies SHOULD render that value instead of the value of <pref>aria-valuenow</pref>.</p>
+				<p>If <pref>aria-valuetext</pref> is specified to a range widget or separator widget, assistive technologies SHOULD render that value instead of the value of <pref>aria-valuenow</pref>.</p>
+				<p>If <pref>aria-valuetext</pref> is specified to a switch, assistive technologies MUST render that value instead of the on/off value.</p>
 			</div>
 			<table class="property-features">
 				<caption>Characteristics:</caption>

@@ -7256,6 +7256,13 @@
                 disallowed: false,
                 deprecated: false,
             },
+            {
+                is: "property",
+                name: "aria-valuetext",
+                required: false,
+                disallowed: false,
+                deprecated: false,
+            },
         ],
     },
     tab: {
